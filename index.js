@@ -34,9 +34,8 @@ app.get("/login", (req, res)=>{
   res.render("login.ejs");
 });
 
-let signupLocals = {data: null, message: null};
 app.get("/signup", (req, res)=>{
-  res.render("signup.ejs", signupLocals);
+  res.render("signup.ejs");
 });
 
 let homeLocals = {data:null,  message:null};
@@ -46,7 +45,7 @@ app.get("/home", (req, res)=>{
 
 
 app.post("/signup", (req,res)=>{
-  const userData = {
+  var userData = {
     username: req.body.username,
     password: req.body.password,
     email: req.body.email,
@@ -54,12 +53,9 @@ app.post("/signup", (req,res)=>{
   User.count({$or:[{username: userData.username}, {email: userData.email}]}).then((count)=>{
     if(count==0){
       User.insertMany([userData]);
-      homeLocals.message = "User successfully registered.";
-      homeLocals.data = userData;
-      res.render("home.ejs");
+      res.redirect("/home");
     } else {
-      signupLocals.message = "User already exists. Please try again.";
-      res.redirect("/signup");
+      res.render("signup.ejs", {message: "User already exists. Please try again."});
     }
   });
 
