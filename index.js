@@ -62,8 +62,6 @@ app.post("/signup", (req,res)=>{
     } else {
       res.render("signup.ejs", {message: "User already exists. Please try again."});
     }
-  }).catch((err)=>{
-    console.log(err);
   });
 
 
