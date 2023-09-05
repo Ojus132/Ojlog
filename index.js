@@ -1,7 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser"
-import { log } from "console";
 
 const PORT = 3000;
 const app = express();
@@ -17,10 +16,12 @@ const userSchema = new mongoose.Schema({
   },
   password:{
     type: String,
-    required: [true, "No password entered!"]
+    required: [true, "No password entered!"],
+    minLength: 8
   },
   email:{
     type: String,
+    required: [true, "No username entered!"]
   },
 })
 const User = mongoose.model("User", userSchema);
@@ -49,21 +50,26 @@ app.post("/signup", (req,res)=>{
     username: req.body.username,
     password: req.body.password,
     email: req.body.email,
-  };  
-  User.count({$or:[{username: userData.username}, {email: userData.email}]}).then((count)=>{
+  };
+
+  User.countDocuments({$or:[{username: userData.username}, {email: userData.email}]}).then((count)=>{
+    console.log(count);
     if(count==0){
       User.insertMany([userData]);
+      homeLocals.data = userData;
+      homeLocals.message = "User registered successfully."
       res.redirect("/home");
     } else {
       res.render("signup.ejs", {message: "User already exists. Please try again."});
     }
+  }).catch((err)=>{
+    console.log(err);
   });
 
 
 
-  mongoose.disconnect;
+  
 });
-
 
 
 app.listen(PORT, ()=>{
