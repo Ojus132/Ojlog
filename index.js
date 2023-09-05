@@ -72,13 +72,13 @@ app.post("/login", (req, res)=>{
   User.findOne({username: userData.username}).then((response)=>{
 
     if(response.password==userData.password){
-      homeLocals.message = "logged in";
+      homeLocals.message = "Successfully logged in";
       homeLocals.data = userData;
       res.redirect("/home");
     } else {
       res.render("login.ejs", {message: "Incorrect Password."});
     }
-    
+
   });
 
 
