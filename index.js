@@ -46,27 +46,42 @@ app.get("/home", (req, res)=>{
 
 
 app.post("/signup", (req,res)=>{
-  var userData = {
-    username: req.body.username,
-    password: req.body.password,
-    email: req.body.email,
-  };
+  var userData = req.body;
 
-  User.countDocuments({$or:[{username: userData.username}, {email: userData.email}]}).then((count)=>{
-    console.log(count);
-    if(count==0){
-      User.insertMany([userData]);
+  if(userData.password.length>=8){
+    User.countDocuments({$or:[{username: userData.username}, {email: userData.email}]}).then((count)=>{
+      console.log(count);
+      if(count==0){
+        User.insertMany([userData]);
+        homeLocals.data = userData;
+        homeLocals.message = "User registered successfully."
+        res.redirect("/home");
+      } else {
+        res.render("signup.ejs", {message: "User already exists. Please try again."});
+      }
+    });
+  } else {
+    res.render("signup.ejs", {message: "Password must be atleast 8 characters long."});
+  }
+
+});
+
+app.post("/login", (req, res)=>{
+  var userData = req.body;
+
+  User.findOne({username: userData.username}).then((response)=>{
+
+    if(response.password==userData.password){
+      homeLocals.message = "logged in";
       homeLocals.data = userData;
-      homeLocals.message = "User registered successfully."
       res.redirect("/home");
     } else {
-      res.render("signup.ejs", {message: "User already exists. Please try again."});
+      res.render("login.ejs", {message: "Incorrect Password."});
     }
+    
   });
 
 
-
-  
 });
 
 
