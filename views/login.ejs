@@ -9,7 +9,11 @@
       <input type="password" name="password" placeholder="Password" required class="inpField">
       <input type="submit" value="LOG IN" class="btn signupBtn">
     </form>
+
+    OR
     
+    <div class="g-signin2 googleBtn" data-onsuccess="onSignIn"></div>
+
     <% if(locals.message){ %>
       <div class="err-msg-div">
         <%= message %>
