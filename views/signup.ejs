@@ -1,21 +1,24 @@
 <%- include("partials/header.ejs") %>
 
+<div class="bg-div">
+  <div class="form">
+    <img src="/images/highResLogoBlack.png" class="formLogo">
+    <h3>SIGN UP</h3>
+    <form action="/signup" method="post">
+      <input type="text" name="username" placeholder="Username" required class="inpField">
+      <input type="password" name="password" placeholder="Password" required class="inpField">
+      <input type="email" name="email" placeholder="Email ID" required class="inpField">
+      <input type="submit" value="SIGN UP" class="btn signupBtn">
+    </form>
 
-<div class="container">
-
-  <h2>SIGN UP</h2>
-  <form action="/signup" method="post">
-    <input type="text" name="username" placeholder="Username" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <input type="email" name="email" placeholder="Email ID" required>
-    <input type="submit" value="SIGN UP" class="btn btn-dark">
-  </form>
+  </div>
 
   <% if(locals.message){ %>
-  <p><%= message %></p>
+    <div class="err-msg-div">
+      <%= message %>
+    </div>
   <% } %>
 
 </div>
-
 
 <%- include("partials/footer.ejs") %>

@@ -1,19 +1,22 @@
 <%- include("partials/header.ejs") %>
 
+<div class="bg-div-login">
+  <div class="form">
+    <img src="/images/highResLogoBlack.png" class="formLogo">
+    <h3>LOG IN</h3>
+    <form action="/login" method="post">
+      <input type="text" name="username" placeholder="Username" required class="inpField">
+      <input type="password" name="password" placeholder="Password" required class="inpField">
+      <input type="submit" value="LOG IN" class="btn signupBtn">
+    </form>
+    
+    <% if(locals.message){ %>
+      <div class="err-msg-div">
+        <%= message %>
+    </div>
+    <% } %>
 
-<div class="container">
-
-  <h2>LOG IN</h2>
-  <form action="/login" method="post">
-    <input type="text" name="username" placeholder="Username" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <input type="submit" value="LOG IN" class="btn btn-primary">
-  </form>
-  
-  <% if(locals.message){ %>
-    <p><%= message %></p>
-  <% } %>
-
+  </div>
 </div>
 
 

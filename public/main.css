@@ -1,0 +1,74 @@
+.bg-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: linear-gradient(rgba(0, 0 , 0, 0.4), rgba(0, 0 , 0, 0.4)), url("./images/signupBG.jpg");
+  height: 100vh;
+  background-size: cover;
+}
+
+.bg-div-login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: linear-gradient(rgba(0, 0 , 0, 0.4), rgba(0, 0 , 0, 0.4)), url("./images/loginBG.jpg");
+  height: 100vh;
+  background-size: cover;
+}
+
+.form{
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 35px;
+  border-radius: 20px;
+  width: 25vw;
+}
+
+.formLogo{
+  height: 10vh;
+  margin-bottom: 10px;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  gap: 20px;
+}
+
+.signupBtn{
+  margin: 10px;
+  border-radius: 10px;
+  border: solid black 1px;
+}
+
+.signupBtn:hover{
+  background-color: black;
+  color: white;
+  transition: all 0.4s ease-in-out;
+}
+
+.inpField{
+  padding: 4px;
+  border-radius: 7px;
+  border: solid black 0.7px;
+}
+
+.err-msg-div{
+  position: absolute;
+  top: 20px;
+  background-color: rgba(253, 30, 30, 0.423);
+  padding: 10px 25px;
+  border-radius: 10px;
+}
+
+@media screen and (max-width:900px){
+  .form{
+    width: 90vw;
+  }
+}
