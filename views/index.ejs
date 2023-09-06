@@ -1,10 +1,18 @@
 <%- include("partials/header.ejs") %>
+<div class="hero-div text-center">
+  <div class="container">
 
-<div class="container">
+    <div class="heading">
+      <img src="/images/highResLogo.png" class="hero-img">
+      <p class="write-up">A simple login website made by me using ejs, express, node, bootstrap and mongoDB.</p>
+    </div>
 
-    <a href="/login" class="btn btn-dark">LOG IN</a>
-    <a href="/signup" class="btn btn-dark">SIGN UP</a>
+    <div class="btns">
+      <a href="/login" class="hero-btn">LOG IN</a>
+      <a href="/signup" class="hero-btn">SIGN UP</a>
+    </div>
 
+  </div>
 </div>
 
 <%- include("partials/footer.ejs") %>
