@@ -37,6 +37,7 @@
 form{
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin-top: 10px;
   gap: 20px;
 }
@@ -48,7 +49,7 @@ form{
 }
 
 .googleBtn{
-  margin-top: 15px;
+  margin-top: 10px;
   border: 0.5px solid;
 }
 
@@ -70,6 +71,25 @@ form{
   background-color: rgba(253, 30, 30, 0.423);
   padding: 10px 25px;
   border-radius: 10px;
+}
+
+.back{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back a{
+  text-decoration: none;
+  color: white;
+}
+
+.backArrow{
+  height: 2.5vh;
+  margin: 15px;
 }
 
 @media screen and (max-width:900px){

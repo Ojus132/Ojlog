@@ -1,0 +1,22 @@
+.socials{
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  flex-direction: column;
+}
+.socials img{
+  height: 4vh;
+  margin: 0px 10px 10px 10px;
+}
+.socials a{
+  text-decoration: none;
+  color: wheat;
+}
+
+.contact{
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  color: wheat;
+  text-align: left;
+}

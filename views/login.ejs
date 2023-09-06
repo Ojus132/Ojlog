@@ -1,18 +1,23 @@
 <%- include("partials/header.ejs") %>
 
 <div class="bg-div-login">
+
+  <button class="back btn">
+    <a href="/">
+      <img src="/images/backArrow.png" class="backArrow">Back
+    </a>
+  </button>
+  
   <div class="form">
-    <img src="/images/highResLogoBlack.png" class="formLogo">
+    <a href="/"><img src="/images/highResLogoBlack.png" class="formLogo"></a>
     <h3>LOG IN</h3>
     <form action="/login" method="post">
       <input type="text" name="username" placeholder="Username" required class="inpField">
       <input type="password" name="password" placeholder="Password" required class="inpField">
       <input type="submit" value="LOG IN" class="btn signupBtn">
+      OR
+      <div class="g-signin2 googleBtn" data-onsuccess="onSignIn"></div>
     </form>
-
-    OR
-    
-    <div class="g-signin2 googleBtn" data-onsuccess="onSignIn"></div>
 
     <% if(locals.message){ %>
       <div class="err-msg-div">
@@ -23,5 +28,16 @@
   </div>
 </div>
 
+<script>
+
+  function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+  }
+
+</script>
 
 <%- include("partials/footer.ejs") %>

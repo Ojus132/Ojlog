@@ -21,8 +21,17 @@ const userSchema = new mongoose.Schema({
   },
   email:{
     type: String,
-    required: [true, "No username entered!"]
+    required: [true, "No email entered!"],
+    //    validate: {
+    //   validator: (value) => {
+    //     const re =
+    //       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    //     return value.match(re);
+    //   },
+    //   message: "Please enter a valid email address",
+    // }
   },
+  
 })
 const User = mongoose.model("User", userSchema);
 
@@ -50,7 +59,6 @@ app.post("/signup", (req,res)=>{
 
   if(userData.password.length>=8){
     User.countDocuments({$or:[{username: userData.username}, {email: userData.email}]}).then((count)=>{
-      console.log(count);
       if(count==0){
         User.insertMany([userData]);
         homeLocals.data = userData;

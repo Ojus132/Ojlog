@@ -1,8 +1,15 @@
 <%- include("partials/header.ejs") %>
 
 <div class="bg-div">
+
+  <button class="back btn">
+    <a href="/">
+      <img src="/images/backArrow.png" class="backArrow">Back
+    </a>
+  </button>
+
   <div class="form">
-    <img src="/images/highResLogoBlack.png" class="formLogo">
+    <a href="/"><img src="/images/highResLogoBlack.png" class="formLogo"></a>
     <h3>SIGN UP</h3>
     <form action="/signup" method="post">
       <input type="text" name="username" placeholder="Username" required class="inpField">
