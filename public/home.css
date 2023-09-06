@@ -1,0 +1,21 @@
+.bg-div-home{
+  background-image:linear-gradient(rgba(0, 0, 0,0.3), rgba(0, 0, 0,0.3)), url("./images/homeBG.jpg");
+  height: 100vh;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home{
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.home h1{
+  font-size: 8rem;
+  text-shadow: 1.5px 1.5px black;
+}
