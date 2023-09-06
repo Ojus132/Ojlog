@@ -8,7 +8,7 @@ const app = express();
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended : true}));
 
-mongoose.connect("mongodb://0.0.0.0:27017/usersDB");
+mongoose.connect("mongodb+srv://gamers316ftw:rosagima@cluster0.kbrxmna.mongodb.net/usersDB");
 const userSchema = new mongoose.Schema({
   username:{
     type: String,
