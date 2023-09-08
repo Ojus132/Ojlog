@@ -5,6 +5,8 @@ import bodyParser from "body-parser"
 const PORT = 3000;
 const app = express();
 
+const ADMINPASS = "lemmebecomeanadminpls";
+
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended : true}));
 
@@ -31,6 +33,7 @@ const userSchema = new mongoose.Schema({
     //   message: "Please enter a valid email address",
     // }
   },
+  admin: Boolean,
   
 })
 const User = mongoose.model("User", userSchema);
@@ -53,9 +56,15 @@ app.get("/home", (req, res)=>{
   res.render("home.ejs", homeLocals);
 });
 
+let adminregLocals = {data:null, message:null}
+app.get("/home/adminreg", (req, res)=>{
+  res.render("adminreg.ejs", adminregLocals);
+});
+
 
 app.post("/signup", (req,res)=>{
   var userData = req.body;
+  userData.admin = false;
 
   if(userData.password.length>=8){
     User.countDocuments({$or:[{username: userData.username}, {email: userData.email}]}).then((count)=>{
@@ -81,7 +90,7 @@ app.post("/login", (req, res)=>{
 
     if(response.password==userData.password){
       homeLocals.message = "Successfully logged in";
-      homeLocals.data = userData;
+      homeLocals.data = adminregLocals.data = response;
       res.redirect("/home");
     } else {
       res.render("login.ejs", {message: "Incorrect Password."});
@@ -89,6 +98,23 @@ app.post("/login", (req, res)=>{
 
   });
 
+
+});
+
+app.post("/adminreg", (req, res)=>{
+
+  let userData = req.body;
+
+  if(userData.password == ADMINPASS){
+    User.updateOne({username: userData.username}, {admin: true})
+    .then((response)=>{
+      console.log(response);
+      res.redirect("/home/admin");
+  });
+  } else {
+    adminregLocals.message = "Incorrect password";
+    res.redirect("/home/adminreg");
+  }
 
 });
 

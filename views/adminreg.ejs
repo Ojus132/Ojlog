@@ -1,0 +1,31 @@
+<%- include("partials/header.ejs") %>
+
+<div class="bg-div-adminreg">
+
+  <button class="back btn">
+    <a href="/home">
+      <img src="/images/backArrow.png" class="backArrow">
+      Back
+    </a>
+  </button>
+
+  <div class="adminpass form">
+    <a href="/home"><img src="/images/highResLogoBlack.png" class="formLogo"></a>
+    <h3>Admin</h3>
+    <form action="/adminreg" method="post">
+      <input type="username" name="username" placeholder="Username" required>
+      <input type="password" name="adminpass" placeholder="Admin password" required>
+      <input type = "submit" class="btn signupBtn" value="Access">
+    </form>
+  </div>
+
+  <% if(locals.message){ %>
+    <div class="err-msg-div">
+      <%= message %>
+  </div>
+  <% } %>
+
+</div>
+
+
+<%- include("partials/footer.ejs") %>

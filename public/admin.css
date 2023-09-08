@@ -1,0 +1,19 @@
+.bg-div-adminreg{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(rgba(0, 0 , 0, 0.4), rgba(0, 0 , 0, 0.4)), url("./images/adminregBG.jpg");
+    background-size: cover;
+}
+
+.adminpass{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.adminpass h3 {
+    margin: 15px 0px;
+}
