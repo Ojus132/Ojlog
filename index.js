@@ -56,11 +56,14 @@ app.get("/home", (req, res)=>{
   res.render("home.ejs", homeLocals);
 });
 
-let adminregLocals = {data:null, message:null}
+let adminregLocals = {data:null, message:null};
 app.get("/home/adminreg", (req, res)=>{
   res.render("adminreg.ejs", adminregLocals);
 });
-
+let adminLocals = {alldata:null, data:null};
+app.get("/home/admin",(req, res)=>{
+  res.render("admin.ejs", adminLocals);
+});
 
 app.post("/signup", (req,res)=>{
   var userData = req.body;
@@ -105,10 +108,17 @@ app.post("/adminreg", (req, res)=>{
 
   let userData = req.body;
 
-  if(userData.password == ADMINPASS){
+  if(userData.adminpass == ADMINPASS){
     User.updateOne({username: userData.username}, {admin: true})
-    .then((response)=>{
-      console.log(response);
+    .then(()=>{
+
+      User.findOne({username: userData.username}).then((response)=>{
+        adminLocals.data = response;
+      });
+      User.find().then((response)=>{
+        adminLocals.alldata = response;
+      });
+      
       res.redirect("/home/admin");
   });
   } else {

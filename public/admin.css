@@ -17,3 +17,32 @@
 .adminpass h3 {
     margin: 15px 0px;
 }
+
+.bg-div-admin{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(rgba(0, 0 , 0, 0.5), rgba(0, 0 , 0, 0.5)), url("./images/adminBG.jpg");
+    background-size: cover;
+}
+
+.list{
+    color: white;
+}
+
+.mem-card{
+    background-color: white;
+    backdrop-filter: blur(10px);
+    color: black;
+    margin: 10px;
+    border-radius: 10px;
+    position: relative;
+    padding: 10px;
+}
+
+.adminStatus{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
