@@ -6,13 +6,16 @@ import "dotenv/config";
 const PORT = 3000;
 const app = express();
 
+//PASSWORDS AND STUFF
 const ADMINPASS = "lemmebecomeanadminpls";
 const DB_id = process.env.DB_id;
 const DB_pass = process.env.DB_pass;
 
+//MIDDLEWARES
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended : true}));
 
+//DATABASE CONFIG
 mongoose.connect("mongodb+srv://" + DB_id + ":" + DB_pass + "@cluster0.kbrxmna.mongodb.net/usersDB");
 const userSchema = new mongoose.Schema({
   username:{
@@ -42,6 +45,7 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model("User", userSchema);
 
 
+//ROUTING
 app.get("/", (req, res)=>{
   res.render("index.ejs");
 });
