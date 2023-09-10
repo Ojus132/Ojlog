@@ -22,5 +22,6 @@ Step by step guide to run the server from the repository on your device.
 * Sometimes the login to admin page may show an error but you can just refresh the page and it gets fixed.
 * The admin page will show you the list of all users on the website with their email and whether they are an admin or not.
 * That is all the functionality for now.Have fun!
+* **(NOTE: I have removed .env from .gitignore to save some steps for setup, just for the sake of convenience of the user. Please dont use the data in there.)**
 
 
