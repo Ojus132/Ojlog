@@ -1,16 +1,19 @@
 import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser"
+import "dotenv/config";
 
 const PORT = 3000;
 const app = express();
 
 const ADMINPASS = "lemmebecomeanadminpls";
+const DB_id = process.env.DB_id;
+const DB_pass = process.env.DB_pass;
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended : true}));
 
-mongoose.connect("mongodb+srv://gamers316ftw:rosagima@cluster0.kbrxmna.mongodb.net/usersDB");
+mongoose.connect("mongodb+srv://" + DB_id + ":" + DB_pass + "@cluster0.kbrxmna.mongodb.net/usersDB");
 const userSchema = new mongoose.Schema({
   username:{
     type: String,

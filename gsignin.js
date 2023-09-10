@@ -1,10 +1,12 @@
-const YOUR_CLIENT_ID = "572390389874-s2tuht5ajor9e479haqv9hs7vhpgs8vf.apps.googleusercontent.com";
+import 'dotenv/config';
+
+const YOUR_CLIENT_ID = process.env.YOUR_CLIENT_ID;
 
 //Initialize google auth object
 function start() {
   gapi.load('auth2', function() {
     auth2 = gapi.auth2.init({
-      client_id: 'YOUR_CLIENT_ID.apps.googleusercontent.com',
+      client_id: YOUR_CLIENT_ID + '.apps.googleusercontent.com',
       // Scopes to request in addition to 'profile' and 'email'
       //scope: 'additional_scope'
       scope: 'email'
