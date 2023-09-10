@@ -1,7 +1,3 @@
 /node_modules
 package-lock.json
-task.txt
-*.env
-*.env.example
-*.env.local
-*.env.staging
+*.txt
